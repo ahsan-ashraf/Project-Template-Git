@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace ConnectGamesStudio {
+namespace NextEdgeGames {
     public class Splash : MonoBehaviour {
 
         #region Serialized Private Fields

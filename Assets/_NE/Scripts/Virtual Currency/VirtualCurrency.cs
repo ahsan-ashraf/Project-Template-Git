@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
 
-namespace ConnectGamesStudio {
+namespace NextEdgeGames {
     public class VirtualCurrency : MonoBehaviour {
 
         #region Serializable Nested Classes
@@ -72,12 +72,12 @@ namespace ConnectGamesStudio {
         private void OnCurrencyUpdate(Event.CurrencyItem currencyItem) {
             CheckCurrencyItems();
         }
-        private bool EnumListIsValid(List<string> list) {
+        private bool CurrencyListIsValid(List<string> list) {
             bool result = false;
-            if (list.Count > 0) {
+            if (list != null && list.Count > 0) {
                 result = true;
                 foreach (string str in list) {
-                    if (list.FindAll(x => x == str).Count > 1) {
+                    if (str.Length <= 0 || list.FindAll(x => x == str).Count > 1) {
                         result = false;
                         break;
                     }
@@ -86,13 +86,13 @@ namespace ConnectGamesStudio {
             return result;
         }
         [EditorCools.Button(null, null, 5f)]
-        private void GenerateEnum() {
-            if (EnumListIsValid(this.currencyEnums)) {
+        private void GenerateCurrency() {
+            if (CurrencyListIsValid(this.currencyEnums)) {
                 string enumName = "CurrencyType";
                 string filePathAndName = "Assets/_NE/Scripts/Virtual Currency/" + enumName + ".cs"; //The folders _NE/Scripts/Virtual Currency/ is expected to exist
 
                 using (StreamWriter streamWriter = new StreamWriter(filePathAndName)) {
-                    streamWriter.WriteLine("namespace ConnectGamesStudio {");
+                    streamWriter.WriteLine("namespace NextEdgeGames {");
                     streamWriter.WriteLine("\tpublic enum " + enumName + " {");
                     for (int i = 0; i < currencyEnums.Count; i++) {
                         streamWriter.WriteLine("\t\t" + currencyEnums[i] + (i != currencyEnums.Count - 1 ? "," : ""));
@@ -103,7 +103,7 @@ namespace ConnectGamesStudio {
                 AssetDatabase.Refresh();
                 Debug.Log(enumName + " enum is Generated Successfully!");
             } else {
-                Debug.LogError("Invalid Enums list, Make sure list size is greater than zero and there are no repeating entries in list");
+                Debug.LogError("Invalid Enums list, Make sure list size is greater than zero and there are no repeating or empty entries in list");
             }
         }
         [EditorCools.Button]

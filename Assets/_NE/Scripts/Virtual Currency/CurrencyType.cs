@@ -1,5 +1,5 @@
-namespace ConnectGamesStudio {
+namespace NextEdgeGames {
 	public enum CurrencyType {
-		Coin
+		coin
 	}
 }

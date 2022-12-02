@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace ConnectGamesStudio {
+namespace NextEdgeGames {
     public class LoadingUi : MonoBehaviour {
 
         #region Serializable Nested Classes

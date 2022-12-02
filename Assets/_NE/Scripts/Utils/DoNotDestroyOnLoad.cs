@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ConnectGamesStudio {
+namespace NextEdgeGames {
     public class DoNotDestroyOnLoad : MonoBehaviour {
 
         #region Monobehaviour Messages
