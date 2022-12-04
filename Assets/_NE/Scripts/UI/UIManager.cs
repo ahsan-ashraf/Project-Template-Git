@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace NextEdgeGames {
     public class UIManager : MonoBehaviour {
-        public enum MenuEnum { None, MainMenu, Inventory, LevelSelection, Store }
+        public enum MenuEnum { None, MainMenu, Inventory, ModeSelection, LevelSelection, Store }
         public enum DialogueEnum { QuitGame, NotEnoughCash }
 
         public static UIManager instance;
