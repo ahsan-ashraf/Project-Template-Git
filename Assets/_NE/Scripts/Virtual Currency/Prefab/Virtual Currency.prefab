@@ -43,8 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc568a3a3c2ba341aff8b01194e3b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currencyEnums:
-  - Coin
+  info:
+  - name: Coin
+    icon: {fileID: 0}
+    defaultAmount: 100
   events:
     onValueChange:
       m_PersistentCalls:

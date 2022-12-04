@@ -9,17 +9,23 @@ namespace NextEdgeGames {
     public class VirtualCurrency : MonoBehaviour {
 
         #region Serializable Nested Classes
-        [Serializable] public class Event {
-            [Serializable] public class CurrencyItem {
-                public CurrencyType type;
-                public int value;
+        [Serializable] private class CurrencyInfo {
+            public string name;
+            public Sprite icon;
+            public int defaultAmount;
+        }
+        [Serializable] public class CurrencyItem {
+            public CurrencyType type;
+            public Sprite icon;
+            public int value;
 
-                public CurrencyItem(CurrencyType type, int value) {
-                    this.type = type;
-                    this.value = value;
-                }
+            public CurrencyItem(CurrencyType type, int value, Sprite icon) {
+                this.type = type;
+                this.value = value;
+                this.icon = icon;
             }
-
+        }
+        [Serializable] public class Event {
             public UnityEvent<CurrencyItem> onValueChange;
         }
         #endregion
@@ -30,12 +36,12 @@ namespace NextEdgeGames {
 
         #region Serialized Private Fields
         [Header("Inspector Assigned")]
-        [SerializeField] private List<string> currencyEnums;
+        [SerializeField] private List<CurrencyInfo> info;
         [SerializeField] private Event events;
 
         [Header("Runtime Information")]
         [SerializeField] private CurrencyType currencyTypes;
-        [SerializeField] private List<Event.CurrencyItem> currencyItems;
+        [SerializeField] private List<CurrencyItem> currencyItems;
         #endregion
 
         #region Properties
@@ -69,15 +75,15 @@ namespace NextEdgeGames {
 
         #region Private Methods
 #if UNITY_EDITOR
-        private void OnCurrencyUpdate(Event.CurrencyItem currencyItem) {
+        private void OnCurrencyUpdate(CurrencyItem currencyItem) {
             CheckCurrencyItems();
         }
-        private bool CurrencyListIsValid(List<string> list) {
+        private bool CurrencyListIsValid(List<CurrencyInfo> list) {
             bool result = false;
             if (list != null && list.Count > 0) {
                 result = true;
-                foreach (string str in list) {
-                    if (str.Length <= 0 || list.FindAll(x => x == str).Count > 1) {
+                foreach (CurrencyInfo item in list) {
+                    if (item.name.Length <= 0 || list.FindAll(x => x.name == item.name).Count > 1) {
                         result = false;
                         break;
                     }
@@ -87,15 +93,15 @@ namespace NextEdgeGames {
         }
         [EditorCools.Button(null, null, 5f)]
         private void GenerateCurrency() {
-            if (CurrencyListIsValid(this.currencyEnums)) {
+            if (CurrencyListIsValid(this.info)) {
                 string enumName = "CurrencyType";
                 string filePathAndName = "Assets/_NE/Scripts/Virtual Currency/" + enumName + ".cs"; //The folders _NE/Scripts/Virtual Currency/ is expected to exist
 
                 using (StreamWriter streamWriter = new StreamWriter(filePathAndName)) {
                     streamWriter.WriteLine("namespace NextEdgeGames {");
                     streamWriter.WriteLine("\tpublic enum " + enumName + " {");
-                    for (int i = 0; i < currencyEnums.Count; i++) {
-                        streamWriter.WriteLine("\t\t" + currencyEnums[i] + (i != currencyEnums.Count - 1 ? "," : ""));
+                    for (int i = 0; i < info.Count; i++) {
+                        streamWriter.WriteLine("\t\t" + info[i].name + (i != info.Count - 1 ? "," : ""));
                     }
                     streamWriter.WriteLine("\t}");
                     streamWriter.WriteLine("}");
@@ -111,8 +117,8 @@ namespace NextEdgeGames {
             currencyItems.Clear();
             foreach (string i in Enum.GetNames(typeof(CurrencyType))) {
                 CurrencyType type = (CurrencyType)Enum.Parse(typeof(CurrencyType), i);
-                int value = GetCurrency(type);
-                currencyItems.Add(new Event.CurrencyItem(type, value));
+                CurrencyItem item = GetCurrency(type);
+                currencyItems.Add(new CurrencyItem(type, item.value, item.icon));
                 
             }
         }
@@ -127,11 +133,12 @@ namespace NextEdgeGames {
         /// <param name="amount"></param>
         public void AddCurrency(CurrencyType type, int amount) {
             int amountToAdd = Mathf.Abs(amount);
-            int currentAmount = GetCurrency(type);
+            int currentAmount = GetCurrency(type).value;
             int total = currentAmount + amountToAdd;
             PlayerPrefs.SetInt(type.ToString(), total);
             if (amountToAdd > 0) {
-                Events.onValueChange.Invoke(new Event.CurrencyItem(type, total));
+                CurrencyInfo inf = info.Find(X => X.name == type.ToString());
+                Events.onValueChange.Invoke(new CurrencyItem(type, total, inf.icon));
             }
         }
 
@@ -144,14 +151,15 @@ namespace NextEdgeGames {
         public bool SpendCurrency(CurrencyType type, int amount) {
             int amountToSpend = Mathf.Abs(amount);
             bool result = false;
-            int currentAmount = GetCurrency(type);
+            int currentAmount = GetCurrency(type).value;
             int remainingAmount = currentAmount - amountToSpend;
             if (remainingAmount >= 0) {
                 PlayerPrefs.SetInt(type.ToString(), remainingAmount);
                 result = true;
             }
             if (result) {
-                Events.onValueChange.Invoke(new Event.CurrencyItem(type, remainingAmount));
+                CurrencyInfo inf = info.Find(X => X.name == type.ToString());
+                Events.onValueChange.Invoke(new CurrencyItem(type, remainingAmount, inf.icon));
             }
             return result;
         }
@@ -161,8 +169,10 @@ namespace NextEdgeGames {
         /// </summary>
         /// <param name="type"></param>
         /// <returns>Amount of currency stored against the provided type.</returns>
-        public int GetCurrency(CurrencyType type) {
-            return PlayerPrefs.GetInt(type.ToString(), 0);
+        public CurrencyItem GetCurrency(CurrencyType type) {
+            CurrencyInfo inf = info.Find(X => X.name == type.ToString());
+            CurrencyItem ci = new CurrencyItem(type, PlayerPrefs.GetInt(type.ToString(), inf.defaultAmount), inf.icon);
+            return ci;
         }
         #endregion
 
