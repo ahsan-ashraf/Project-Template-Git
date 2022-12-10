@@ -47,6 +47,9 @@ MonoBehaviour:
   - name: Coin
     icon: {fileID: 0}
     defaultAmount: 100
+  - name: Gold
+    icon: {fileID: 0}
+    defaultAmount: 50
   events:
     onValueChange:
       m_PersistentCalls:

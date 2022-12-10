@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7935993
 RectTransform:
   m_ObjectHideFlags: 0
@@ -369,15 +369,14 @@ MonoBehaviour:
   image_Level: {fileID: 1944126586}
   image_Lock: {fileID: 1051072626}
   image_Selector: {fileID: 1376227248}
-  modeNo: 2
-  modeData:
+  levelNo: 2
+  levelData:
     image: {fileID: 0}
-    modeNo: 2
-    totalLevel: 10
+    levelNo: 2
     unlockByDefault: 0
-    isComingSoon: 0
-    prefID: M2
-    manualUnlockAllModes: 0
+    modeNo: 1
+    prefID: M1L2
+    manualUnlock: 0
 --- !u!114 &30278767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,7 +851,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -205, y: 111.262665}
+  m_AnchoredPosition: {x: -205, y: 111.262695}
   m_SizeDelta: {x: 230, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &163906556
@@ -1131,11 +1130,71 @@ MonoBehaviour:
   modeData:
     image: {fileID: 0}
     modeNo: 3
-    totalLevel: 10
     unlockByDefault: 0
     isComingSoon: 0
+    levelsData:
+    - image: {fileID: 0}
+      levelNo: 1
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L1
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 2
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L2
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 3
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L3
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 4
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L4
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 5
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L5
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 6
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L6
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 7
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L7
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 8
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L8
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 9
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L9
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 10
+      unlockByDefault: 0
+      modeNo: 3
+      prefID: M3L10
+      manualUnlock: 0
     prefID: M3
-    manualUnlockAllModes: 0
+    manualUnlock: 0
 --- !u!114 &206516654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2567,15 +2626,14 @@ MonoBehaviour:
   image_Level: {fileID: 1771421580}
   image_Lock: {fileID: 1030708278}
   image_Selector: {fileID: 1057592509}
-  modeNo: 3
-  modeData:
+  levelNo: 3
+  levelData:
     image: {fileID: 0}
-    modeNo: 3
-    totalLevel: 10
+    levelNo: 3
     unlockByDefault: 0
-    isComingSoon: 0
-    prefID: M3
-    manualUnlockAllModes: 0
+    modeNo: 1
+    prefID: M1L3
+    manualUnlock: 0
 --- !u!114 &444551924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2825,7 +2883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -205, y: 111.262665}
+  m_AnchoredPosition: {x: -205, y: 111.262695}
   m_SizeDelta: {x: 230, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474704979
@@ -3101,11 +3159,71 @@ MonoBehaviour:
   modeData:
     image: {fileID: 0}
     modeNo: 2
-    totalLevel: 10
     unlockByDefault: 0
     isComingSoon: 0
+    levelsData:
+    - image: {fileID: 0}
+      levelNo: 1
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L1
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 2
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L2
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 3
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L3
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 4
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L4
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 5
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L5
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 6
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L6
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 7
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L7
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 8
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L8
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 9
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L9
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 10
+      unlockByDefault: 0
+      modeNo: 2
+      prefID: M2L10
+      manualUnlock: 0
     prefID: M2
-    manualUnlockAllModes: 0
+    manualUnlock: 0
 --- !u!114 &524774460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4767,7 +4885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -205, y: 111.262665}
+  m_AnchoredPosition: {x: -205, y: 111.262695}
   m_SizeDelta: {x: 230, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &783665317
@@ -5497,15 +5615,14 @@ MonoBehaviour:
   image_Level: {fileID: 981910109}
   image_Lock: {fileID: 1042793477}
   image_Selector: {fileID: 942738260}
-  modeNo: 1
-  modeData:
+  levelNo: 1
+  levelData:
     image: {fileID: 0}
-    modeNo: 1
-    totalLevel: 10
+    levelNo: 1
     unlockByDefault: 1
-    isComingSoon: 0
-    prefID: M1
-    manualUnlockAllModes: 0
+    modeNo: 1
+    prefID: M1L1
+    manualUnlock: 0
 --- !u!114 &870575928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,7 +5741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -205, y: 111.262665}
+  m_AnchoredPosition: {x: -205, y: 111.262695}
   m_SizeDelta: {x: 230, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &881413293
@@ -6067,11 +6184,71 @@ MonoBehaviour:
   modeData:
     image: {fileID: 0}
     modeNo: 1
-    totalLevel: 10
     unlockByDefault: 1
     isComingSoon: 0
+    levelsData:
+    - image: {fileID: 0}
+      levelNo: 1
+      unlockByDefault: 1
+      modeNo: 1
+      prefID: M1L1
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 2
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L2
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 3
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L3
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 4
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L4
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 5
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L5
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 6
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L6
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 7
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L7
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 8
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L8
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 9
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L9
+      manualUnlock: 0
+    - image: {fileID: 0}
+      levelNo: 10
+      unlockByDefault: 0
+      modeNo: 1
+      prefID: M1L10
+      manualUnlock: 0
     prefID: M1
-    manualUnlockAllModes: 0
+    manualUnlock: 0
 --- !u!1 &942738258
 GameObject:
   m_ObjectHideFlags: 0
@@ -7379,15 +7556,14 @@ MonoBehaviour:
   image_Level: {fileID: 852223706}
   image_Lock: {fileID: 358777821}
   image_Selector: {fileID: 149967159}
-  modeNo: 4
-  modeData:
+  levelNo: 4
+  levelData:
     image: {fileID: 0}
-    modeNo: 4
-    totalLevel: 10
+    levelNo: 4
     unlockByDefault: 0
-    isComingSoon: 1
-    prefID: M4
-    manualUnlockAllModes: 0
+    modeNo: 1
+    prefID: M1L4
+    manualUnlock: 0
 --- !u!114 &1076355521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9447,6 +9623,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3222820362989270170, guid: 9d492c8eb2807d841b0d6e94817a40ea, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d492c8eb2807d841b0d6e94817a40ea, type: 3}
 --- !u!224 &1459541799 stripped
@@ -10349,11 +10529,11 @@ MonoBehaviour:
   modeData:
     image: {fileID: 0}
     modeNo: 4
-    totalLevel: 10
     unlockByDefault: 0
     isComingSoon: 1
+    levelsData: []
     prefID: M4
-    manualUnlockAllModes: 0
+    manualUnlock: 0
 --- !u!114 &1831970018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10472,7 +10652,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -205, y: 111.262665}
+  m_AnchoredPosition: {x: -205, y: 111.262695}
   m_SizeDelta: {x: 230, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844925138
@@ -11292,7 +11472,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1610, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2067801669
 MonoBehaviour:

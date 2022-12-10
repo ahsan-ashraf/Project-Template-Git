@@ -26,7 +26,8 @@ namespace NextEdgeGames {
             UIManager.instance.OpenMenu(UIManager.MenuEnum.Store);
         }
         private void OnCurrencyUpdate(VirtualCurrency.CurrencyItem item) {
-            foreach (CurrencyButton cb in currencyButtons) {
+            CurrencyButton cb = currencyButtons.Find(x => x.Type == item.type);
+            if (cb) {
                 cb.UpdateCurrency(item);
             }
         }

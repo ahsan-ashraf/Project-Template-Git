@@ -1,5 +1,6 @@
 namespace NextEdgeGames {
 	public enum CurrencyType {
-		Coin
+		Coin,
+		Gold
 	}
 }

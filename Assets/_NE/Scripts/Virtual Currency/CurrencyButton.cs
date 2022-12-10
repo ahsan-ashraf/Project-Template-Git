@@ -12,11 +12,13 @@ namespace NextEdgeGames {
         [SerializeField] private Image image_Icon;
         [SerializeField] private bool autoUpdateIcon;
 
+        public CurrencyType Type { get => type; }
+
         private void Awake() {
             button = GetComponent<Button>();
         }
         private void Start() {
-            VirtualCurrency.CurrencyItem c = VirtualCurrency.instance.GetCurrency(type);
+            VirtualCurrency.CurrencyItem c = VirtualCurrency.instance.GetCurrency(Type);
             if (c != null) {
                 text_Value.text = c.value.ToString();
                 if (autoUpdateIcon) {
@@ -30,9 +32,9 @@ namespace NextEdgeGames {
         }
 
         public void UpdateCurrency(VirtualCurrency.CurrencyItem item = null) {
-            VirtualCurrency.CurrencyItem ci = item != null ? item : VirtualCurrency.instance.GetCurrency(type);
+            VirtualCurrency.CurrencyItem ci = item != null ? item : VirtualCurrency.instance.GetCurrency(Type);
             text_Value.text = ci.value.ToString();
-            image_Icon.sprite = autoUpdateIcon ? item.icon : image_Icon.sprite;
+            image_Icon.sprite = autoUpdateIcon ? ci.icon : image_Icon.sprite;
         }
     }
 }

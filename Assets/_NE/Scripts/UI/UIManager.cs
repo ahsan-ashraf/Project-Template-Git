@@ -34,14 +34,16 @@ namespace NextEdgeGames {
             OpenMenu(MenuEnum.MainMenu);
         }
         public void OpenMenu(MenuEnum type) {
-            Menu m = menus.Find(x => x.Type == type);
-            m.SetActive(true);
-            image_BG.gameObject.SetActive(m.UseBGImage);
-            if (activeMenu != null) {
-                menusStack.Push(activeMenu);
-                activeMenu.SetActive(false);
+            if (activeMenu == null || activeMenu.Type != type) {
+                Menu m = menus.Find(x => x.Type == type);
+                m.SetActive(true);
+                image_BG.gameObject.SetActive(m.UseBGImage);
+                if (activeMenu != null) {
+                    menusStack.Push(activeMenu);
+                    activeMenu.SetActive(false);
+                }
+                activeMenu = m;
             }
-            activeMenu = m;
         }
         public void SetActiveDialogue(DialogueEnum type, bool setActive) {
             Dialogue d = dialogues.Find(x => x.Type == type);

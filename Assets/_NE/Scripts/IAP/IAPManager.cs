@@ -7,23 +7,28 @@ using System.Collections.Generic;
 namespace NextEdgeGames {
     public class IAPManager : MonoBehaviour, IStoreListener {
 
+        public class ProductInfo {
+            public string id;
+            public ProductType type;
+        }
+
         private IStoreController controller;
         private IExtensionProvider extensionProvider;
 
         [Header("Inspector Assigned")]
-        [SerializeField] private List<string> products;
+        [SerializeField] private List<ProductInfo> productInfo;
 
         [Header("Runtime Information")]
         public IAPProducts availableProducts;
 
 #if UNITY_EDITOR
         #region Private Methods
-        private bool ProductListIsValid(List<string> list) {
+        private bool ProductListIsValid(List<ProductInfo> list) {
             bool result = false;
             if (list != null && list.Count > 0) {
                 result = true;
-                foreach (string str in list) {
-                    if (str.Length <= 0 || list.FindAll(x => x == str).Count > 1) {
+                foreach (ProductInfo pInfo in list) {
+                    if (pInfo.id.Length <= 0 || list.FindAll(x => x.id == pInfo.id).Count > 1) {
                         result = false;
                         break;
                     }
@@ -33,17 +38,17 @@ namespace NextEdgeGames {
         }
         [EditorCools.Button(null, null, 5f)]
         private void GenerateProducts() {
-            if (ProductListIsValid(products)) {
+            if (ProductListIsValid(productInfo)) {
                 string enumName = "IAPProducts";
                 string filePathAndName = "Assets/_NE/Scripts/IAP/" + enumName + ".cs"; //The folders _NE/Scripts/Virtual Currency/ is expected to exist
 
                 using (StreamWriter streamWriter = new StreamWriter(filePathAndName)) {
                     streamWriter.WriteLine("namespace NextEdgeGames {");
                     streamWriter.WriteLine("\tpublic enum " + enumName + " {");
-                    for (int i = 0; i < products.Count; i++) {
-                        string[] arr = products[i].Split('.');
+                    for (int i = 0; i < productInfo.Count; i++) {
+                        string[] arr = productInfo[i].id.Split('.');
                         string p = arr[arr.Length - 1];
-                        streamWriter.WriteLine("\t\t" + p + (i != products.Count - 1 ? "," : ""));
+                        streamWriter.WriteLine("\t\t" + p + (i != productInfo.Count - 1 ? "," : ""));
                     }
                     streamWriter.WriteLine("\t}");
                     streamWriter.WriteLine("}");
@@ -57,6 +62,14 @@ namespace NextEdgeGames {
 
         #endregion
 #endif
+
+        public void Initialize() {
+            ConfigurationBuilder configurationBuilder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+            foreach (ProductInfo pInfo in productInfo) {
+                configurationBuilder.AddProduct(pInfo.id, pInfo.type);
+            }
+            
+        }
 
         #region IStoreListener Callbacks
         public void OnInitialized(IStoreController controller, IExtensionProvider extensions) {
